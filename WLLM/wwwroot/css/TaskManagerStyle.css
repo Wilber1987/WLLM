@@ -1,0 +1,253 @@
+w-main-task {
+    display: flex !important;
+    height: 100% !important;
+    width: 100% !important;
+}
+
+w-filter-option {
+    max-height: 250px;
+}
+
+.task-container {
+    height: -webkit-fill-available;
+    box-sizing: border-box;
+    display: grid;
+    grid-template-rows: auto;
+    min-height: 600px;
+    padding: 10px;
+    gap: 10px
+}
+
+.TaskContainer {
+    width: 100%;
+}
+
+w-main-task {
+    display: block;
+    height: -webkit-fill-available;
+}
+
+.dashBoardView {
+    display: grid;
+    grid-template-columns: auto auto;
+    grid-gap: 20px
+}
+
+.OptionContainer {
+    margin: 0 0 20px 0;
+}
+
+.panelContainer {
+    display: flex;
+    overflow-x: auto;
+    overflow-y: hidden;
+    padding: 10px;
+    gap: 10px;
+    width: fit-content;
+    height: 100%;
+    max-width: calc(100% - 50px);
+}
+
+
+.panel-container {
+    padding: 0px;
+    border-radius: 0px 10px 10px 0px;
+    border-left: 1px solid var(--fifty-color);
+    display: grid;
+    grid-template-columns: fit-content(360px);
+    width: fit-content;
+    min-width: fit-content;
+    max-height: 90vh;
+}
+
+.BtnDinamictT {
+    font-weight: bold;
+    border: none;
+    padding: 0px;
+    margin: 5px;
+    outline: none;
+    text-align: center;
+    display: inline-block;
+    font-size: 10px;
+    cursor: pointer;
+    background-color: #4894aa;
+    color: #fff;
+    border-radius: 0.2cm;
+    width: 25px;
+    height: 25px;
+    background-color: #4894aa;
+    font-family: monospace;
+}
+
+.panel {
+    padding: 5px;
+    transition: all 0.4s;
+    overflow-y: auto;
+    padding-bottom: 20px;
+    max-width: 100%;
+}
+
+.panel-inact {
+    padding: 5px;
+    overflow: hidden;
+    /* max-width: calc(80px); */
+    font-size: 12px;
+    transition: all 0.4s;
+}
+
+.task-card {
+    background-color: var(--secundary-color);
+    height: 130px;
+    border-radius: 10px;
+    padding-bottom: 10px;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    margin-bottom: 15px;
+    /* container-type: inline-size; */
+}
+
+.task-title {
+    padding: 10px 10px;
+    font-size: 12px;
+    font-weight: bold;
+    background-color: var(--secundary-color);
+    cursor: pointer;
+}
+
+.card-options {
+    padding: 0px;
+    width: calc(100% - 20px);
+    height: 25px;
+    justify-content: flex-end;
+    display: flex;
+}
+
+.title-panel {
+    font-size: 12px;
+    text-transform: uppercase;
+    font-weight: bold;
+    margin-bottom: 10px;
+    display: block;
+    color: var(--font-secundary-color);
+}
+
+.p-title {
+    height: 100%;
+    padding: 5px 10px;
+    margin: 0px;
+}
+
+.task-detail {
+    padding: 5px 10px;
+    font-size: 11px
+}
+
+.p-participantes {
+    display: flex;
+    padding: 5px 10px;
+}
+
+.img-participantes {
+    padding: 0;
+    height: 25px;
+    width: 25px;
+    border-radius: 50%;
+    margin-right: 5px;
+    overflow: hidden;
+}
+
+.task-details {
+    border-left: 1px solid #d9e0e9;
+    display: inline-block;
+    height: 100%;
+    vertical-align: top;
+    padding: 20px;
+    width: 250px;
+    box-sizing: border-box;
+}
+
+.tag-progress {
+    margin: 10px 0;
+}
+
+.tag-progress h2 {
+    font-size: 16px;
+    margin-bottom: 1rem;
+}
+
+.tag-progress p {
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+    margin: 10px;
+}
+
+.tag-progress p span {
+    color: #b4b4b4;
+}
+
+.tag-progress .progress {
+    width: 100%;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    border: none;
+    border-radius: 10px;
+    height: 10px;
+}
+
+.tag-progress .progress::-webkit-progress-bar,
+.tag-progress .progress::-webkit-progress-value {
+    border-radius: 10px;
+}
+
+.tag-progress .progress::-webkit-progress-bar {
+    background-color: #c0c0c0;
+}
+
+.tag-progress .progress::-webkit-progress-value {
+    background: #9c9c9c;
+}
+
+.tag-progress .progress--Activo::-webkit-progress-bar {
+    background-color: #d8e7f4;
+}
+
+.tag-progress .progress--Activo::-webkit-progress-value {
+    background-color: #08a0f7;
+}
+
+.tag-progress .progress--Proceso::-webkit-progress-bar {
+    background-color: #dee7e3;
+}
+
+.tag-progress .progress--Proceso::-webkit-progress-value {
+    background-color: #46bd84;
+}
+
+.tag-progress .progress--Finalizado::-webkit-progress-bar {
+    background-color: #f1b492;
+}
+
+.tag-progress .progress--Finalizado::-webkit-progress-value {
+    background: #fd7326;
+}
+
+.tag-progress .progress--Espera::-webkit-progress-bar {
+    background-color: #ecd8e6;
+}
+
+.tag-progress .progress--Espera::-webkit-progress-value {
+    background: #d459e8;
+}
+
+
+.tag-progress .progress--Espera::-webkit-progress-bar {
+    background-color: #ecd8e6;
+}
+
+.tag-progress .progress--Espera::-webkit-progress-value {
+    background: #d459e8;
+}
+
