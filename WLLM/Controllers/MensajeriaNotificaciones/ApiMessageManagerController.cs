@@ -9,6 +9,7 @@ using CAPA_NEGOCIO.Gestion_Mensajeria;
 using DataBaseModel;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.SignalR;
+using UI.ApiControllers;
 using WLLM.Hubs.MensajeriaNotificaciones;
 
 namespace UI.Controllers
@@ -47,33 +48,9 @@ namespace UI.Controllers
             // Guardar el mensaje (tu lógica actual)
             var response = Inst.SaveMessage(sessionKey);
 
-            if (response.status == 200 && _hubContext != null)
+            if (response.status == 200)
             {
-                try
-                {
-                    // Obtener la conversación
-                    var conversacion = new Conversacion { Id_conversacion = Inst.Id_conversacion }
-                        .Find<Conversacion>();
-
-                    // Destinatarios (todos excepto el emisor)
-                    var destinatarios = conversacion?.Conversacion_usuarios
-                        .Where(cu => cu.Id_usuario != Inst.Usuario_id)
-                        .ToList();
-
-                    foreach (var cu in destinatarios)
-                    {
-                        var destinatarioId = cu.Id_usuario.ToString();
-
-                        // ✅ Enviar directamente al usuario, sin connectionId
-                        _hubContext.Clients.User(destinatarioId).SendAsync("MensajeRecibido", Inst);
-
-                        Console.WriteLine($"[SignalR] Enviado a usuario: {destinatarioId}");
-                    }
-                }
-                catch (Exception ex)
-                {
-                    Console.WriteLine($"[SignalR] Error al notificar: {ex.Message}");
-                }
+                new WSocketSignalService(_hubContext).SendMessageSignal(Inst);
             }
             return response;
         }

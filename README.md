@@ -8,3 +8,5 @@ clonar con todos los submodulos:
 
 dotnet publish -c Release -o C:\wwwroot\ssmp
 
+git submodule add https://github.com/Wilber1987/WDevCore.git WLLM/wwwroot/WDevCore
+git submodule add https://github.com/Wilber1987/CSharpAttributes.git WLLM/CSharpAttributes

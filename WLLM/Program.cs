@@ -13,8 +13,23 @@ var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddRazorPages();
+#region CONFIGURACIONES PARA SOCKETS
 builder.Services.AddSignalR();
-
+builder.Services
+	.AddSignalR()
+	.AddHubOptions<ChatHub>(options =>
+	{
+		options.EnableDetailedErrors = true;
+	}).AddJsonProtocol(options =>
+	{
+		// Desactivar camelCase
+		options.PayloadSerializerOptions.PropertyNamingPolicy = null;
+    });
+    
+// Registrar el proveedor de ID de usuario
+builder.Services.AddSingleton<IUserIdProvider, CustomUserIdProvider>();
+#endregion    
+    
 #region CONFIGURACIONES PARA API
 builder.Services.AddControllers()
 	.AddJsonOptions(JsonOptions => JsonOptions.JsonSerializerOptions.PropertyNamingPolicy = null)// retorna los nombres reales de las propiedades
@@ -43,18 +58,7 @@ builder.Services.AddSession(options =>
 	options.IdleTimeout = TimeSpan.FromMinutes(60);
 });
 
-builder.Services
-	.AddSignalR()
-	.AddHubOptions<ChatHub>(options =>
-	{
-		options.EnableDetailedErrors = true;
-	}).AddJsonProtocol(options =>
-	{
-		// Desactivar camelCase
-		options.PayloadSerializerOptions.PropertyNamingPolicy = null;
-    });
-// Registrar el proveedor de ID de usuario
-builder.Services.AddSingleton<IUserIdProvider, CustomUserIdProvider>();
+
 
 
 var app = builder.Build();
